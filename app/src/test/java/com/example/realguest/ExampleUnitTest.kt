@@ -1,4 +1,4 @@
-package com.example.petshop
+package com.example.realguest
 
 import org.junit.Test
 
