@@ -13,6 +13,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         sharedPref = getPreferences(Context.MODE_PRIVATE)
         setContentView(R.layout.activity_main)
-
     }
 }

@@ -109,10 +109,6 @@ class LoginFragment : Fragment() {
 
         loginButton.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
-//            loginViewModel.login(
-//                usernameEditText.text.toString(),
-//                passwordEditText.text.toString()
-//            )
             Common.retrofitService.auth(
                 usernameEditText.text.toString(),
                 passwordEditText.text.toString()

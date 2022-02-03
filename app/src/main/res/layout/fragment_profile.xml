@@ -25,11 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Грузим ID"
-        app:layout_constraintEnd_toStartOf="@+id/username"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="182dp" />
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="171dp" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/avatar_id"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -39,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.626"
+        app:shapeAppearanceOverlay="@style/circleImageViewStyle"
         tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
