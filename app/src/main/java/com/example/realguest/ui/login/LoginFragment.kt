@@ -13,9 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.realguest.ProfileFragment
+import com.example.realguest.VisitsFragment
 import com.example.realguest.R
 import com.example.realguest.common.Common
+import com.example.realguest.common.Common.retrofitService
 import com.example.realguest.databinding.FragmentLoginBinding
 import com.example.realguest.model.Auth
 import retrofit2.Call
@@ -109,7 +110,7 @@ class LoginFragment : Fragment() {
 
         loginButton.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
-            Common.retrofitService.auth(
+            retrofitService.auth(
                 usernameEditText.text.toString(),
                 passwordEditText.text.toString()
             ).enqueue(object : Callback<Auth> {
@@ -133,7 +134,7 @@ class LoginFragment : Fragment() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         // Create new fragment
         parentFragmentManager.commit {
-            replace(R.id.fragment_container_view, ProfileFragment())
+            replace(R.id.fragment_container_view, VisitsFragment())
         }
     }
 

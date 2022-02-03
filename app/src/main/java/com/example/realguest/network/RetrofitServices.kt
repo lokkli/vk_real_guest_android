@@ -1,5 +1,6 @@
 package com.example.realguest.network
 
+import com.example.realguest.data.Visits
 import com.example.realguest.model.Auth
 import com.example.realguest.model.Profile
 import retrofit2.Call
@@ -13,5 +14,8 @@ interface RetrofitServices {
     fun auth(@Query("username") username: String, @Query("password") password: String): Call<Auth>
 
     @GET("profile")
-    fun profile(@Header("Authorization") token: String): Call<Profile>
+    fun getProfile(@Header("Authorization") token: String): Call<Profile>
+
+    @GET("visits")
+    fun getVisits(@Header("Authorization") token: String): Call<Visits>
 }

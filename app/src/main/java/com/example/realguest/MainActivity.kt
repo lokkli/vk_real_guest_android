@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.realguest.common.Common.sharedPref
 
 class MainActivity : AppCompatActivity() {
-    lateinit var layoutManager: LinearLayoutManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPref = getPreferences(Context.MODE_PRIVATE)
