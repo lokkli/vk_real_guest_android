@@ -1,15 +1,15 @@
 package com.example.realguest.model
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
 import com.example.realguest.R
-import com.example.realguest.data.Visit
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MyVisitsAdapter(private val context: Context, private val visits: MutableList<Visit>) :
@@ -17,12 +17,12 @@ class MyVisitsAdapter(private val context: Context, private val visits: MutableL
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemTitle: TextView = itemView.item_title
+        val visitDescription: TextView = itemView.visit_description
+        val visitDate: TextView = itemView.visit_time
+        val visitPhotoContainer: LinearLayout = itemView.visit_photo_container
 
         fun bind(itemView: Visit) {
-            itemTitle.setOnClickListener {
-                makeText(it.context, "нажал на ${itemTitle.text}", Toast.LENGTH_SHORT)
-                    .show()
-            }
+
         }
     }
 
@@ -34,9 +34,28 @@ class MyVisitsAdapter(private val context: Context, private val visits: MutableL
 
     override fun getItemCount() = visits.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val listItem = visits[position]
         holder.bind(listItem)
-        holder.itemTitle.text = visits[position].description.title
+        holder.itemTitle.text = listItem.description.title
+        holder.visitDate.text = "12:03"
+//            OffsetDateTime.parse(
+//            listItem.dateTime, ofPattern(
+//                "yyyy-MM-dd'T'hh:mm:ss")
+//        ).format(ofPattern(
+//            "DD MM yyyy", Locale("ru")))
+        val listCandidate =listItem.suitable.primary.firstOrNull()
+        if (listCandidate!= null) {
+            Picasso.get().load(listItem.suitable.primary[0].photo100)
+                .into(holder.visitPhotoContainer.candidate_1)
+            Picasso.get().load(listItem.suitable.primary.getOrNull(1)?.photo100)
+                .into(holder.visitPhotoContainer.candidate_2)
+        }
+
+        holder.visitDescription.text =
+            listItem.description.devices +
+                    "\n\n${listItem.description.portrait}" +
+                    "\n\n${listItem.description.filteringInterval}"
     }
 }

@@ -1,22 +1,23 @@
-package com.example.realguest.data
+package com.example.realguest.model
 
-import com.beust.klaxon.Json
+import com.google.gson.annotations.SerializedName
+import java.time.OffsetDateTime
 
 data class Visits(
     val content: List<Visit>,
     val pageable: Pageable,
     val last: Boolean,
 
-    @Json(name = "total_pages")
+    @SerializedName("total_pages")
     val totalPages: Long,
 
-    @Json(name = "total_elements")
+    @SerializedName("total_elements")
     val totalElements: Long,
 
     val first: Boolean,
     val number: Long,
 
-    @Json(name = "number_of_elements")
+    @SerializedName("number_of_elements")
     val numberOfElements: Long,
 
     val size: Long,
@@ -24,7 +25,7 @@ data class Visits(
 )
 
 data class Visit(
-    @Json(name = "date_time")
+    @SerializedName("date_time")
     val dateTime: String,
 
     val authorized: Boolean,
@@ -37,7 +38,7 @@ data class Description(
     val devices: String,
     val portrait: String,
 
-    @Json(name = "filtering_interval")
+    @SerializedName("filtering_interval")
     val filteringInterval: String
 )
 
@@ -49,22 +50,20 @@ data class Suitable(
 data class User(
     val id: Long,
 
-    @Json(name = "first_name")
+    @SerializedName("first_name")
     val firstName: String,
 
-    @Json(name = "last_name")
+    @SerializedName("last_name")
     val lastName: String,
 
-    @Json(name = "photo_100")
+    @SerializedName("photo_100")
     val photo100: String
 )
 
 data class Pageable(
-    @Json(name = "page_number")
-    val pageNumber: Long,
+    val page_number: Long,
 
-    @Json(name = "page_size")
-    val pageSize: Long,
+    val page_size: Long,
 
     val offset: Long
 )

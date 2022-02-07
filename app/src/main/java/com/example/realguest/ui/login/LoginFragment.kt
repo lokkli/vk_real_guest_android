@@ -13,12 +13,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.realguest.VisitsFragment
 import com.example.realguest.R
-import com.example.realguest.common.Common
 import com.example.realguest.common.Common.retrofitService
+import com.example.realguest.common.Common.sharedPref
 import com.example.realguest.databinding.FragmentLoginBinding
 import com.example.realguest.model.Auth
+import com.example.realguest.ui.mainPage.VisitsFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,20 +27,15 @@ class LoginFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
     private var _binding: FragmentLoginBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +43,6 @@ class LoginFragment : Fragment() {
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
 
-        //todo remove default values
         val usernameEditText = binding.username.apply { setText("89252891511") }
         val passwordEditText = binding.password.apply { setText("1385624aaA") }
         val loginButton = binding.login
@@ -81,13 +75,8 @@ class LoginFragment : Fragment() {
             })
 
         val afterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // ignore
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                // ignore
-            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable) {
                 loginViewModel.loginDataChanged(
@@ -115,13 +104,18 @@ class LoginFragment : Fragment() {
                 passwordEditText.text.toString()
             ).enqueue(object : Callback<Auth> {
                 override fun onResponse(call: Call<Auth>, response: Response<Auth>) {
-                    Common.sharedPref.apply {
-                        edit().putString("access_token", response.body()?.access_token)
-                            .putInt("user_id", response.body()?.user_id!!)
-                            .apply()
-                    }
-                    print("Успех, твой id = ${response.body()?.access_token}")
-                    updateUiWithUser(LoggedInUserView("Random_name"))
+                    if (response.isSuccessful) {
+                        updateUiWithUser(LoggedInUserView(""))
+                        sharedPref.apply {
+                            edit().putString("access_token", response.body()?.access_token)
+                                .putInt("user_id", response.body()?.user_id!!)
+                                .apply()
+                        }
+                    } else Toast.makeText(
+                        requireActivity().applicationContext,
+                        "Неудача",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onFailure(call: Call<Auth>, t: Throwable) {
@@ -129,10 +123,12 @@ class LoginFragment : Fragment() {
                 }
             })
         }
+        if (sharedPref.getString("access_token", "")!!.length > 2) {
+            updateUiWithUser(LoggedInUserView(""))
+        }
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
-        // Create new fragment
         parentFragmentManager.commit {
             replace(R.id.fragment_container_view, VisitsFragment())
         }

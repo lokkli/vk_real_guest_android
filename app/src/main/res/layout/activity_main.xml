@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
+        android:name="com.example.realguest.ui.login.LoginFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:tag="container_tag"
-        android:name="com.example.realguest.ui.login.LoginFragment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
