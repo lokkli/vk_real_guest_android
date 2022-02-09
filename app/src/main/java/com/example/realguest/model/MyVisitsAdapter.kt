@@ -39,13 +39,12 @@ class MyVisitsAdapter(private val context: Context, private val visits: MutableL
         val listItem = visits[position]
         holder.bind(listItem)
         holder.itemTitle.text = listItem.description.title
-        //  holder.visitDate.text = listItem.dateTime.format(ofPattern("EEE"))
         holder.visitDate.text = "09.02.2022 13:30"
         val listCandidate = listItem.suitable.primary.firstOrNull()
         if (listCandidate != null) {
             Picasso.get().load(listItem.suitable.primary[0].photo100)
                 .into(holder.visitPhotoContainer.candidate_1)
-            Picasso.get().load(listItem.suitable.primary.getOrNull(1)?.photo100)
+            Picasso.get().load(listItem.suitable.primary.getOrNull(0)?.photo100)
                 .into(holder.visitPhotoContainer.candidate_2)
         }
         holder.visitDescription.text =

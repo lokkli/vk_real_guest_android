@@ -3,6 +3,7 @@ package com.example.realguest.ui.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import com.example.realguest.common.Common.sharedPref
 import com.example.realguest.databinding.FragmentLoginBinding
 import com.example.realguest.model.Auth
 import com.example.realguest.ui.main.VisitsFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -128,7 +130,16 @@ class LoginFragment : Fragment() {
         }
     }
 
+    //todo make bottom_navigation listener
     private fun updateUiWithUser(model: LoggedInUserView) {
+        requireActivity().bottom_navigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> Log.v("", "Pressed HOME")
+                R.id.person -> ""
+                R.id.settings -> ""
+            }
+            true
+        }
         parentFragmentManager.commit {
             replace(R.id.fragment_container_view, VisitsFragment())
         }
