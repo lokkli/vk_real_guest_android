@@ -13,9 +13,7 @@ import com.example.realguest.common.Common.retrofitService
 import com.example.realguest.common.Common.sharedPref
 import com.example.realguest.databinding.FragmentProfileBinding
 import com.example.realguest.model.MyVisitsAdapter
-import com.example.realguest.model.Profile
 import com.example.realguest.model.Visits
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +23,6 @@ class VisitsFragment : Fragment() {
     lateinit var adapter: MyVisitsAdapter
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    // private val model = ViewModelProvider.of(this).get(ProfileViewModel::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,17 +34,16 @@ class VisitsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retrofitService.getProfile("Bearer " + sharedPref.getString("access_token", "")!!)
-            .enqueue(object : Callback<Profile> {
-                override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
-                    val profile = response.body()!!
-                    binding.username.text = profile.first_name
-                    Picasso.get().load(profile.photo_100).into(binding.avatarId)
-                }
-
-                override fun onFailure(call: Call<Profile>, t: Throwable) {
-                }
-            })
+//        retrofitService.getProfile("Bearer " + sharedPref.getString("access_token", "")!!)
+//            .enqueue(object : Callback<Profile> {
+//                override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+//                    val profile = response.body()!!
+//
+//                }
+//
+//                override fun onFailure(call: Call<Profile>, t: Throwable) {
+//                }
+//            })
         requireView().findViewById<RecyclerView>(R.id.recyclerVisitList).apply {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             recyclerVisitList.layoutManager = layoutManager
@@ -78,7 +74,6 @@ class VisitsFragment : Fragment() {
                         "Неудача",
                         Toast.LENGTH_LONG
                     ).show()
-
                 }
             })
     }

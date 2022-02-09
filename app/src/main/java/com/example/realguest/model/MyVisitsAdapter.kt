@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.realguest.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*
-import java.time.format.DateTimeFormatter.ofPattern
 
 class MyVisitsAdapter(private val context: Context, private val visits: MutableList<Visit>) :
     RecyclerView.Adapter<MyVisitsAdapter.MyViewHolder>() {
@@ -40,9 +39,8 @@ class MyVisitsAdapter(private val context: Context, private val visits: MutableL
         val listItem = visits[position]
         holder.bind(listItem)
         holder.itemTitle.text = listItem.description.title
-        holder.visitDate.text = listItem.dateTime.format(
-            ofPattern("EEE, MMM d, ''yy")
-        )
+        //  holder.visitDate.text = listItem.dateTime.format(ofPattern("EEE"))
+        holder.visitDate.text = "09.02.2022 13:30"
         val listCandidate = listItem.suitable.primary.firstOrNull()
         if (listCandidate != null) {
             Picasso.get().load(listItem.suitable.primary[0].photo100)
