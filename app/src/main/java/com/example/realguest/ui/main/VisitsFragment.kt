@@ -1,4 +1,4 @@
-package com.example.realguest.ui.mainPage
+package com.example.realguest.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +25,7 @@ class VisitsFragment : Fragment() {
     lateinit var adapter: MyVisitsAdapter
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    // private val model = ViewModelProvider.of(this).get(ProfileViewModel::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

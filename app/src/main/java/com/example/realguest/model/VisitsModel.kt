@@ -1,7 +1,6 @@
 package com.example.realguest.model
 
 import com.google.gson.annotations.SerializedName
-import java.time.OffsetDateTime
 
 data class Visits(
     val content: List<Visit>,
@@ -19,7 +18,6 @@ data class Visits(
 
     @SerializedName("number_of_elements")
     val numberOfElements: Long,
-
     val size: Long,
     val empty: Boolean
 )
@@ -27,7 +25,6 @@ data class Visits(
 data class Visit(
     @SerializedName("date_time")
     val dateTime: String,
-
     val authorized: Boolean,
     val description: Description,
     val suitable: Suitable

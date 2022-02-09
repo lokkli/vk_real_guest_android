@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.realguest.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*
+import java.time.format.DateTimeFormatter.ofPattern
 
 class MyVisitsAdapter(private val context: Context, private val visits: MutableList<Visit>) :
     RecyclerView.Adapter<MyVisitsAdapter.MyViewHolder>() {
@@ -39,20 +40,16 @@ class MyVisitsAdapter(private val context: Context, private val visits: MutableL
         val listItem = visits[position]
         holder.bind(listItem)
         holder.itemTitle.text = listItem.description.title
-        holder.visitDate.text = "12:03"
-//            OffsetDateTime.parse(
-//            listItem.dateTime, ofPattern(
-//                "yyyy-MM-dd'T'hh:mm:ss")
-//        ).format(ofPattern(
-//            "DD MM yyyy", Locale("ru")))
-        val listCandidate =listItem.suitable.primary.firstOrNull()
-        if (listCandidate!= null) {
+        holder.visitDate.text = listItem.dateTime.format(
+            ofPattern("EEE, MMM d, ''yy")
+        )
+        val listCandidate = listItem.suitable.primary.firstOrNull()
+        if (listCandidate != null) {
             Picasso.get().load(listItem.suitable.primary[0].photo100)
                 .into(holder.visitPhotoContainer.candidate_1)
             Picasso.get().load(listItem.suitable.primary.getOrNull(1)?.photo100)
                 .into(holder.visitPhotoContainer.candidate_2)
         }
-
         holder.visitDescription.text =
             listItem.description.devices +
                     "\n\n${listItem.description.portrait}" +

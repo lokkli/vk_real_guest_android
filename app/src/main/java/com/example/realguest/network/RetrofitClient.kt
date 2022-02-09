@@ -1,11 +1,9 @@
 package com.example.realguest.network
 
-import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
@@ -14,10 +12,10 @@ object RetrofitClient {
 
     fun getClient(baseUrl: String): Retrofit {
         if (retrofit == null) {
-           // val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'hh:mm:ss").create()
+      //      val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:SSSSSSS").create()
             retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
+                //    .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(
                     okhttpClient.apply {
                         okhttpClient.addInterceptor(HttpLoggingInterceptor().setLevel(BODY))

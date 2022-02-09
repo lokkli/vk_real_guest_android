@@ -1,9 +1,9 @@
-package com.example.realguest
+package com.example.realguest.ui
 
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.realguest.R
 import com.example.realguest.common.Common.sharedPref
 
 class MainActivity : AppCompatActivity() {

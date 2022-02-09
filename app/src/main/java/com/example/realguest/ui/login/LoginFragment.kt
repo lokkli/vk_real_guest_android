@@ -18,7 +18,7 @@ import com.example.realguest.common.Common.retrofitService
 import com.example.realguest.common.Common.sharedPref
 import com.example.realguest.databinding.FragmentLoginBinding
 import com.example.realguest.model.Auth
-import com.example.realguest.ui.mainPage.VisitsFragment
+import com.example.realguest.ui.main.VisitsFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
