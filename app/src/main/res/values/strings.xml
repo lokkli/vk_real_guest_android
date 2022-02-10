@@ -13,5 +13,5 @@
     <string name="hello_blank_fragment">Пустой фрагмент</string>
     <string name="setting_string">Настройки</string>
     <string name="profile_string">Профиль</string>
-    <string name="main_string">Главная</string>
+    <string name="main_string">Мои гости</string>
 </resources>

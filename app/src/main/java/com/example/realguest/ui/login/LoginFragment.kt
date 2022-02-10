@@ -3,9 +3,9 @@ package com.example.realguest.ui.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -132,17 +132,10 @@ class LoginFragment : Fragment() {
 
     //todo make bottom_navigation listener
     private fun updateUiWithUser(model: LoggedInUserView) {
-        requireActivity().bottom_navigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> Log.v("", "Pressed HOME")
-                R.id.person -> ""
-                R.id.settings -> ""
-            }
-            true
-        }
         parentFragmentManager.commit {
             replace(R.id.fragment_container_view, VisitsFragment())
         }
+        requireActivity().bottom_navigation.visibility = VISIBLE
     }
 
 
