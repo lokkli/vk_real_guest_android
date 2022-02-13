@@ -18,10 +18,10 @@
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="16dp"
-            android:text="item_title"
             android:textColor="@android:color/black"
             android:textSize="17sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
+            android:fontFamily="@font/font"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
