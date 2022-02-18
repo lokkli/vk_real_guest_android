@@ -4,6 +4,7 @@ import com.example.realguest.model.Visits
 import com.example.realguest.model.Auth
 import com.example.realguest.model.Profile
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface RetrofitServices {
@@ -15,5 +16,8 @@ interface RetrofitServices {
     fun getProfile(@Header("Authorization") token: String): Call<Profile>
 
     @GET("visits")
-    fun getVisits(@Header("Authorization") token: String): Call<Visits>
+   suspend fun getVisitsNew(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int = 0
+    ): Visits
 }
