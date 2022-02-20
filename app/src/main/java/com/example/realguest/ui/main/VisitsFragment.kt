@@ -42,6 +42,10 @@ class VisitsFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = visitAdapter
         }
+        binding.swipeToRefreshLayout.setOnRefreshListener {
+         visitAdapter.refresh()
+            binding.swipeToRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setupView() {

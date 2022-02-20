@@ -30,7 +30,5 @@ class VisitSource(private val _retrofitServices: RetrofitServices) : PagingSourc
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Visit>): Int? {
-        TODO("Not yet implemented")
-    }
+    override fun getRefreshKey(state: PagingState<Int, Visit>): Int = 0
 }
