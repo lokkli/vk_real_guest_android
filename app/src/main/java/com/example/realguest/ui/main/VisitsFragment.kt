@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.realguest.common.Common.retrofitService
 import com.example.realguest.databinding.VisitsFragmentBinding
 import com.example.realguest.model.VisitAdapter
-import kotlinx.android.synthetic.main.visits_fragment.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -38,12 +37,12 @@ class VisitsFragment : Fragment() {
 
     private fun setupList() {
         visitAdapter = VisitAdapter()
-        recyclerVisitList.apply {
+        binding.recyclerVisitList.apply {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = visitAdapter
         }
         binding.swipeToRefreshLayout.setOnRefreshListener {
-         visitAdapter.refresh()
+            visitAdapter.refresh()
             binding.swipeToRefreshLayout.isRefreshing = false
         }
     }

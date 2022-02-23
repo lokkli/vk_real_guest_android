@@ -1,7 +1,6 @@
 package com.example.realguest.model
 
 data class Visits(
-
     val content: List<Visit>,
     val pageable: Pageable,
     val last: Boolean,
@@ -18,7 +17,7 @@ data class Visit(
     val date_time: String,
     val authorized: Boolean,
     val description: Description,
-    val suitable: Suitable
+    val primary_suitable: List<User>
 )
 
 data class Description(
@@ -37,7 +36,7 @@ data class User(
     val id: Long,
     val first_name: String,
     val last_name: String,
-    val photo_100: String
+    val photo_50: String
 )
 
 data class Pageable(

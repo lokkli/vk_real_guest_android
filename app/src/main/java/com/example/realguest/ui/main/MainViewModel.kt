@@ -9,7 +9,7 @@ import com.example.realguest.network.RetrofitServices
 import com.example.realguest.network.VisitSource
 
 class MainViewModel(private val retrofitServices: RetrofitServices) : ViewModel() {
-    val listData = Pager(PagingConfig(pageSize = 2)) {
+    val listData = Pager(PagingConfig(pageSize = 1)) {
         VisitSource(retrofitServices)
     }.flow.cachedIn(viewModelScope)
 }

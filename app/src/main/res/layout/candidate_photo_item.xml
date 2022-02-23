@@ -8,7 +8,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:scaleType="centerCrop"
-        android:id = "@+id/image_id"
+        android:id = "@+id/candidate_image"
         app:shapeAppearanceOverlay="@style/circleImageViewStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,7 +17,7 @@
     </com.google.android.material.imageview.ShapeableImageView>
 
     <TextView
-        android:id="@+id/text_id"
+        android:id="@+id/candidate_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Текст заглушки"

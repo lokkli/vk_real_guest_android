@@ -20,7 +20,7 @@ import com.example.realguest.common.Common.sharedPref
 import com.example.realguest.databinding.FragmentLoginBinding
 import com.example.realguest.model.Auth
 import com.example.realguest.ui.main.VisitsFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -135,7 +135,8 @@ class LoginFragment : Fragment() {
         parentFragmentManager.commit {
             replace(R.id.fragment_container_view, VisitsFragment())
         }
-        requireActivity().bottom_navigation.visibility = VISIBLE
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            .visibility = VISIBLE
     }
 
 

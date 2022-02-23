@@ -2,40 +2,46 @@ package com.example.realguest.model
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.RecyclerView
 import com.example.realguest.R
+import com.example.realguest.databinding.CandidatePhotoItemBinding
 import com.example.realguest.ui.visitDetail.VisitDetailFragment
 import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.candidate_photo_item.view.*
 
 class CandidatePhotoAdapter(private val listCandidate: List<User>) :
-    RecyclerView.Adapter<CandidatePhotoAdapter.MyViewHolder>() {
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ShapeableImageView = itemView.image_id
-    }
+    RecyclerView.Adapter<CandidatePhotoAdapter.CandidatePhotoHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.candidate_photo_item, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CandidatePhotoHolder {
+        val binding =
+            CandidatePhotoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CandidatePhotoHolder(
+            binding
         )
     }
 
+    inner class CandidatePhotoHolder(val binding: CandidatePhotoItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val imageView: ShapeableImageView = binding.candidateImage
+    }
+
+
     @SuppressLint("ResourceType")
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Picasso.get()
-            .load(listCandidate[position].photo_100)
-            ?.into(holder.imageView)
-        holder.itemView.text_id.text = listCandidate[position].first_name
+    override fun onBindViewHolder(holder: CandidatePhotoHolder, position: Int) {
+        val candidate = listCandidate[position]
+        with(holder.binding) {
+            Picasso.get()
+                .load(candidate.photo_50)
+                ?.into(candidateImage)
+            candidateName.text = candidate.first_name
+        }
 
         holder.itemView.setOnClickListener {
             (holder.imageView.context as AppCompatActivity).supportFragmentManager.commit {
-            add(R.id.fragment_container_view, VisitDetailFragment())
+                add(R.id.fragment_container_view, VisitDetailFragment())
             }
         }
     }

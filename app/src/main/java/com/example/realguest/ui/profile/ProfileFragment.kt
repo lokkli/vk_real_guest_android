@@ -29,7 +29,7 @@ class ProfileFragment : Fragment() {
             binding.apply {
                 profileName.text = profile.first_name
                 profileSurname.text = profile.last_name
-                Picasso.get().load(profile.photo_100).into(profilePhoto)
+                Picasso.get().load(profile.photo_50).into(profilePhoto)
             }
         }
     }
