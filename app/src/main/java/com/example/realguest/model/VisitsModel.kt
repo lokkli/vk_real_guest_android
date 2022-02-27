@@ -15,21 +15,14 @@ data class Visits(
 
 data class Visit(
     val date_time: String,
-    val authorized: Boolean,
-    val description: Description,
-    val primary_suitable: List<User>
+    val description: List<Description>,
+    val suitable: List<User>,
+    val title: String
 )
 
 data class Description(
-    val title: String,
-    val devices: String,
-    val portrait: String,
-    val filtering_interval: String
-)
-
-data class Suitable(
-    val primary: List<User>,
-    val secondary: List<User>
+    val code: String,
+    val value: String
 )
 
 data class User(

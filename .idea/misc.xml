@@ -18,10 +18,17 @@
         <entry key="..\:/Users/STAS/AndroidStudioProjects/vk_real_guest_android/app/src/main/res/layout/profile_fragment.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/STAS/AndroidStudioProjects/vk_real_guest_android/app/src/main/res/layout/visits_fragment.xml" value="0.20270270270270271" />
         <entry key="..\:/Users/STAS/AndroidStudioProjects/vk_real_guest_android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4041666666666667" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_home.xml" value="0.213" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_menu_settings.xml" value="0.2315" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_person.xml" value="0.2315" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1605" />
+        <entry key="app/src/main/res/drawable/ic_desktop.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_home_outline_28.xml" value="0.2315" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/candidate_photo_item.xml" value="0.11458333333333333" />
+        <entry key="app/src/main/res/layout/description_list_item.xml" value="0.4771865844726563" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.19202898550724637" />
         <entry key="app/src/main/res/layout/fragment_main_page.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23866926552592843" />
@@ -29,6 +36,7 @@
         <entry key="app/src/main/res/layout/list_item.xml" value="0.2390625" />
         <entry key="app/src/main/res/layout/primary_item.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.200537370954241" />
+        <entry key="app/src/main/res/layout/visit_list_item.xml" value="0.29792633056640627" />
         <entry key="app/src/main/res/layout/visits_fragment.xml" value="0.22400512695312502" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2390625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1115" />

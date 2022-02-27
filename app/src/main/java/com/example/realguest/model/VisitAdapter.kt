@@ -7,6 +7,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.realguest.databinding.VisitListItemBinding
 
 class VisitAdapter : PagingDataAdapter<Visit, VisitAdapter.VisitViewHolder>(VisitDifferentiator) {
@@ -22,26 +24,28 @@ class VisitAdapter : PagingDataAdapter<Visit, VisitAdapter.VisitViewHolder>(Visi
     inner class VisitViewHolder(val binding: VisitListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val childRecyclerView: RecyclerView = binding.listCandidate
+        val descriptionList: RecyclerView = binding.descriptionList
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: VisitViewHolder, position: Int) {
-        val childLayoutManager =
-            LinearLayoutManager(holder.childRecyclerView.context, RecyclerView.HORIZONTAL, false)
         val visit = getItem(position)!!
 
         with(holder.binding) {
             listCandidate.apply {
-                layoutManager = childLayoutManager
-                adapter = CandidatePhotoAdapter(visit.primary_suitable)
+                layoutManager =
+                    LinearLayoutManager(holder.childRecyclerView.context, HORIZONTAL, false)
+                adapter = CandidatePhotoAdapter(visit.suitable)
                 setRecycledViewPool(viewPool)
             }
-            itemTitle.text = visit.description.title
-            visitTime.text = "09.02.2022 13:30"
-            visitDescription.text = visit.description.portrait
+            descriptionList.apply {
+                layoutManager = LinearLayoutManager(holder.descriptionList.context, VERTICAL, false)
+                adapter = DescriptionListAdapter(visit.description)
+                setRecycledViewPool(RecyclerView.RecycledViewPool())
+            }
+            itemTitle.text = visit.title
         }
     }
-
 
     object VisitDifferentiator : DiffUtil.ItemCallback<Visit>() {
         override fun areItemsTheSame(oldItem: Visit, newItem: Visit): Boolean = oldItem == newItem

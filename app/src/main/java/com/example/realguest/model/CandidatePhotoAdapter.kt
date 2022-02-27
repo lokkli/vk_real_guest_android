@@ -18,16 +18,13 @@ class CandidatePhotoAdapter(private val listCandidate: List<User>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CandidatePhotoHolder {
         val binding =
             CandidatePhotoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CandidatePhotoHolder(
-            binding
-        )
+        return CandidatePhotoHolder(binding)
     }
 
     inner class CandidatePhotoHolder(val binding: CandidatePhotoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val imageView: ShapeableImageView = binding.candidateImage
     }
-
 
     @SuppressLint("ResourceType")
     override fun onBindViewHolder(holder: CandidatePhotoHolder, position: Int) {
